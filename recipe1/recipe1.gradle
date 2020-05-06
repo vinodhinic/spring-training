@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.9.RELEASE"
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+    }
+
+    group 'org.example'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+
+    dependencyManagement {
+        imports {
+            mavenBom 'io.spring.platform:platform-bom:1.1.1.RELEASE'
+        }
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/commons-logging/commons-logging
+        compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+
+        compile 'org.springframework:spring-core'
+        compile 'org.springframework:spring-context'
+        testCompile 'org.springframework:spring-test'
+
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+}

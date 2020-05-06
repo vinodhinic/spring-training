@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.foo.EmployeeMapper">
+    <sql id="baseSelectQuery">
+        SELECT id, first_name AS firstName, last_name AS lastName, level FROM employee
+    </sql>
+    <select id="selectEmployeeById" resultType="com.foo.domain.Employee" parameterType="java.lang.Integer">
+        <include refid="baseSelectQuery"/>
+        where id = #{id}
+    </select>
+    <insert id="insertEmployee" parameterType="com.foo.domain.Employee">
+        INSERT INTO employee (id, first_name, last_name, level) VALUES
+        ( #{id}, #{firstName}, #{lastName}, #{level} )
+    </insert>
+    <update id="updateEmployeeLevel" parameterType="com.foo.domain.Employee">
+        UPDATE employee SET level = #{level} WHERE id= #{id}
+    </update>
+    <delete id="deleteEmployeeById" parameterType="com.foo.domain.Employee">
+        DELETE FROM employee WHERE id=#{id}
+    </delete>
+    <select id="selectEmployeeByLevel" parameterType="java.lang.Integer" resultType="com.foo.domain.Employee">
+        <include refid="baseSelectQuery"/>
+        WHERE level = #{level}
+    </select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="true">
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d [%t] %C{2}.%M\(\):%L %mdc %-5p]: %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.foo.EmployeeMapper" level="debug"/>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

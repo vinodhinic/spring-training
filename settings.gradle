@@ -1,0 +1,17 @@
+rootProject.name = 'trinity-spring-training'
+include 'recipe1', 'recipe1:recipe1a', 'recipe1:recipe1b', 'recipe1:recipe1c', 'recipe1:recipe1d',
+        'recipe2', 'recipe3', 'recipe4', 'recipe5', 'recipe6', 'recipe7', 'recipe8', 'recipe9', 'recipe10',
+        'spring-batch-recipes', 'spring-batch-recipes:recipe11', 'spring-batch-recipes:recipe12',
+        'spring-batch-recipes:recipe13', 'spring-batch-recipes:recipe14'
+
+findProject(':recipe1:recipe1a')?.name = 'recipe1a'
+findProject(':recipe1:recipe1b')?.name = 'recipe1b'
+findProject(':recipe1:recipe1c')?.name = 'recipe1c'
+findProject(':recipe1:recipe1d')?.name = 'recipe1d'
+findProject(':spring-batch-recipes:recipe11')?.name = 'recipe11'
+findProject(':spring-batch-recipes:recipe12')?.name = 'recipe12'
+findProject(':spring-batch-recipes:recipe13')?.name = 'recipe13'
+findProject(':spring-batch-recipes:recipe14')?.name = 'recipe14'
+rootProject.children.each { subproject ->
+    subproject.buildFileName = "${subproject.name}.gradle"
+}
